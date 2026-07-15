@@ -12,3 +12,4 @@ wheels/
 main.py
 pyproject.toml
 Learning-Nodejs/Docs
+node_modules
