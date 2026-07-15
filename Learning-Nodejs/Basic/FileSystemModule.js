@@ -27,3 +27,34 @@ readFile("Learning-Nodejs/Docs/first.txt", "utf-8", (err, results) => {
         })
     })
 })
+
+// promised based api 
+
+const { open } = require("fs/promises")
+async function main() {
+    const file_content = await open("Learning-Nodejs/Docs/first.txt", "r");
+    try {
+        const content = await file_content.readFile("utf-8");
+        console.log(content);
+    }
+    finally {
+        await file_content.close()
+    }
+}
+
+main()
+
+// using then 
+
+const File = open("Learning-Nodejs/Docs/first.txt", "r");
+File.then(
+    (value) => {
+        //readFile also return a promise.
+        value.readFile("utf-8").then(
+            (results) => {
+                console.log(results);
+            }
+        )
+    }
+);
+
