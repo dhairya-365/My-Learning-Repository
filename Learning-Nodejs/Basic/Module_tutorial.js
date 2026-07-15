@@ -13,3 +13,9 @@
 // });
 
 // console.log('read file'); 
+
+const {readFileSync,writeFileSync, read} = require('fs')
+writeFileSync("Learning-Nodejs/Docs/test.txt","Hello world");
+
+let msg = readFileSync("Learning-Nodejs/Docs/test.txt",'utf-8')
+console.log(msg)
