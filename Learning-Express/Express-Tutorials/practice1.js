@@ -15,7 +15,20 @@ const app = express()
 const port = 3000
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.status(200).send('Hello World!')
+})
+
+app.get("/about", (req, res) => {
+    res.status(200).send("<h1>This is our About page</h1>");
+
+})
+
+app.get("/contact", (req, res) => {
+    res.status(200).send("<h1>This is our Contact page.</h1>")
+})
+
+app.all("/{*splat}", (req, res) => {
+    res.status(404).send("<h1>Resource not Found</h1>")
 })
 
 app.listen(port, () => {
