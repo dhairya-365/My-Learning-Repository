@@ -129,3 +129,21 @@ proxyExample.age = 10;
 
 console.log(proxyExample)
 
+// Custom error tracking 
+
+class ValidationError extends Error {
+    constructor(message, field) {
+        super(message);
+        this.name = "ValidationError";
+        this.field = field;
+    }
+}
+
+try {
+    throw new ValidationError("Not valid input", "Email");
+}
+catch (err) {
+    if (err instanceof ValidationError) {
+        console.error(`Invalid field [${err.field}]: ${err.message}`)
+    }
+}
